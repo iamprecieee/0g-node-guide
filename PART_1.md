@@ -28,6 +28,10 @@
   ```
   go version
   ```
+- Ensure your server timezone configuration is UTC. Check your timezone by running:
+  ```
+  timedatectl
+  ```
 
 
 ### Node Setup
