@@ -1,5 +1,5 @@
 # Installation-and-Syncing
-## NB: This tutorial assumes you are using a vps/termius. To set up a vps please refer to [mzcat-vps-guide](https://medium.com/@mztacat/setting-up-a-vps-d030b2a28bab).
+## NB: This guide assumes you are using a vps/termius. To set up a vps please refer to [mzcat-vps-guide](https://medium.com/@mztacat/setting-up-a-vps-d030b2a28bab).
 
 ### Pre-requisites Installation
 - Update and install necessary packages:
