@@ -14,7 +14,7 @@
 - The next step is to create your validator:
   ```
   evmosd tx staking create-validator \\
-  --amount=10000000000000000evmos \\
+  --amount=10000000000000000aevmos \\
   --pubkey=$(evmosd tendermint show-validator) \\
   --moniker="<insert_your_validator_name_here>" \\
   --chain-id=zgtendermint_9000-1 \\
