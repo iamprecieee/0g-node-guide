@@ -35,11 +35,12 @@
 
 
 ### Node Setup
-- Clone and install the evmos repository:
+- Download pre-built `evmosd` binary:
   ```
-  git clone -b testnet https://github.com/0glabs/0g-evmos.git
-  cd 0g-evmos/networks/testnet/
-  ./install.sh
+  wget https://rpc-zero-gravity-testnet.trusted-point.com/evmosd
+  chmod +x ./evmosd
+  mv ./evmosd /usr/local/bin/
+  evmosd version
   ```
 - Set chain ID and initialize node:
   ```
@@ -52,7 +53,7 @@
   ```
 - Download and validate a new genesis file:
   ```
-  wget -P ~/.evmosd/config https://github.com/0glabs/0g-evmos/releases/download/v1.0.0-testnet/genesis.json
+  wget https://rpc-zero-gravity-testnet.trusted-point.com/genesis.json -O $HOME/.evmosd/config/genesis.json
   evmosd validate-genesis
   ```
 - Open the `config.toml` file:
