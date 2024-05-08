@@ -17,8 +17,8 @@
   ```
 - Download and install upgraded version:
   ```
-  wget https://go.dev/dl/go1.22.2.linux-amd64.tar.gz
-  sudo tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz
+  wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
+  sudo tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz
   ```
 - Export to `PATH`:
   ```
@@ -35,46 +35,46 @@
 
 
 ### Node Setup
-- Download pre-built `evmosd` binary:
+- Clone `0gchaind` repo, install and confirm version(0.1.0):
   ```
-  wget https://rpc-zero-gravity-testnet.trusted-point.com/evmosd
-  chmod +x ./evmosd
-  mv ./evmosd /usr/local/bin/
-  evmosd version
+  git clone -b v0.1.0 https://github.com/0glabs/0g-chain.git
+  ./0g-chain/networks/testnet/install.sh
+  0gchaind version
   ```
 - Set chain ID and initialize node:
   ```
-  evmosd config chain-id zgtendermint_9000-1
-  evmosd init <insert_your_validator_name_here> --chain-id zgtendermint_9000-1
+  0gchaind config chain-id zgtendermint_16600-1
+  0gchaind init <insert_your_validator_name_here> --chain-id zgtendermint_16600-1
   ```
 - Remove the existing genesis file:
   ```
-  rm /root/.evmosd/config/genesis.json
+  rm /root/.0gchain/config/genesis.json
   ```
 - Download and validate a new genesis file:
   ```
-  wget https://rpc-zero-gravity-testnet.trusted-point.com/genesis.json -O $HOME/.evmosd/config/genesis.json
-  evmosd validate-genesis
+  sudo apt install -y unzip wget
+  wget -P ~/.0gchain/config https://github.com/0glabs/0g-chain/releases/download/v0.1.0/genesis.json
+  0gchaind validate-genesis
   ```
 - Open the `config.toml` file:
   ```
-  nano ~/.evmosd/config/config.toml
+  nano ~/.0gchain/config/config.toml
   ```
 - Scroll down till you see the `seeds` line under the `[p2p]` section. Then replace the current `seeds` with this:
   ```
-  seeds = "8c01665f88896bca44e8902a30e4278bed08033f@54.241.167.190:26656,b288e8b37f4b0dbd9a03e8ce926cd9c801aacf27@54.176.175.48:26656,8e20e8e88d504e67c7a3a58c2ea31d965aa2a890@54.193.250.204:26656,e50ac888b35175bfd4f999697bdeb5b7b52bfc06@54.215.187.94:26656"
+  seeds = "c4d619f6088cb0b24b4ab43a0510bf9251ab5d7f@54.241.167.190:26656,44d11d4ba92a01b520923f51632d2450984d5886@54.176.175.48:26656,f2693dd86766b5bf8fd6ab87e2e970d564d20aff@54.193.250.204:26656,f878d40c538c8c23653a5b70f615f8dccec6fb9f@54.215.187.94:26656"
+  ```
+- Scroll down till you see the `persistent_peers` line under the same `[p2p]` section. Then replace the current `persistent_peers` with this:
+  ```
+  persistent_peers = "d00273ac6a2470cd4e48008d9af4d2521b134394@62.169.29.136:26656,f5a7d34355f6d89b7ece583131c6b1f79ac5485e@218.102.97.67:25856,a3e6c6214805c1c068882f1981855c7a9f5926ea@213.168.249.202:26656,da1f4985ce3df05fd085460485adefa93592a54c@172.232.33.25:26656,91f079ccd2e0edf42e0fa57183ac92c22c525658@14.245.25.144:14256,9d09d391b2cf706a597d03fe8bb6700fe5cac53d@65.108.198.183:18456,5a202fb905f20f96d8ff0726f0c0756d17cf23d8@43.248.98.100:26656,74775d65b6ab427c685efcaa8190912d3a60e562@123.19.45.21:12656,f2693dd86766b5bf8fd6ab87e2e970d564d20aff@54.193.250.204:26656,9d7564df34efa146a94c073e5bf3f5e11f947b75@155.133.22.230:26656,e179d05dc792d9b902be3baa7a31a07a92afbcf0@118.142.83.5:26656,c4b9c3a7f3651af729d73b150e714ee91e7585c1@14.176.200.133:26656,f64f0fb500c62bffa33d60450d30792ee4b5fbd0@167.86.119.168:26656,d4085fd93ab77576f2acdb25d2d817061db5afe6@62.169.19.156:26656,2b8ee12f4f94ebc337af94dbec07de6f029a24e6@94.16.31.161:26656,0f5022e4265184052a5468379687625a81fd255e@154.12.253.116:26656,3859828e1099214de14dae91d1f7decf2374eeb4@47.236.170.254:26656,23b0a0624699f85062ddebf910583f70a5b9e86b@14.167.152.116:14256,b8f8ed478f2794629fdb5cf0c01edaed80f00f84@168.119.64.172:26656,5d81d59e81356a33e6ccccaa3d419ff73244697e@107.173.18.103:26656,c4d619f6088cb0b24b4ab43a0510bf9251ab5d7f@54.241.167.190:26656,a83f5d07a8a64827851c9f1d0c21c900b9309608@188.166.181.110:26656,19943cbe46cdb9eb37cb06c0067ce63154eee6ea@213.199.52.155:26656,a6ff8a651dd0a0e66dbfb2174ccadcbbcf567b29@66.94.122.224:26656,f3c912cf5653e51ee94aaad0589a3d176d31a19d@157.90.0.102:31656,141dbd90d5c3411c9ba72ba03704ccdb70875b01@65.109.147.58:36656,cd529839591e13f5ed69e9a029c5d7d96de170fe@46.4.55.46:34656,a8d7c5a051c4649ba7e267c94e48a7c64a00f0eb@65.108.127.146:26656,2579a86e3c4c1fabe3955d3a9ed40363bf9618f7@138.201.37.195:26656,66cfdcd92e5206e59bc507bef3f6d72ed21a149d@109.199.100.254:26656,254bbbc42bca6b7e81081a42a4993086e20e06ed@89.116.29.154:26656,641173e9d500c50769680226391d955f11728c32@76.9.210.28:26656,5a69dafc859eee83b623b0c88b392337bb82eeb3@194.163.144.148:26656,3c2ddd1e25a99bcbad08f502eca719a52465c1fd@37.60.231.42:26656,f878d40c538c8c23653a5b70f615f8dccec6fb9f@54.215.187.94:26656,75a398f9e3a7d24c6b3ba4ab71bf30cd59faee5c@95.216.42.217:26656,57588ff7b1e862e754f3cd74fc2414f03cb79da4@213.133.111.189:26656,ebad6e8b1d10514185a8a46afb0f6a08945095bc@94.72.117.120:26656,0494c33335eed845a7ba1f894b54f6b31054c09d@207.180.204.179:26656,b92597c5124da2a5177c1c2e11f69dfec45a721a@45.90.220.92:26656535ddcc917ab5ee6ddd2259875dac6018651da24@176.9.183.45:32656,5b2a956457b2918426b1f685fa6e3791609fb30c@84.247.165.146:26656,25ecfad6ed1aa2cf8840ab86b734294e3ac8aa6e@167.86.119.12:26656,ccb98fa0b1b416a9f37c08c193d4444074320c04@109.199.121.58:26656,4a0ccc6d708ec82fa2f13ad09da996fc9596d741@65.108.236.15:26656"
   ```
 - Save and exit. To do this, click `ctrl + x`, click `y`, and then click `enter` on your keyboard.
-- Set up persistent peers:
+- Start the node to sync to the latest blockchain (This could take some time):
   ```
-  PEERS="d813235cc2326983e0ea071ffa8acba341df0adb@89.117.56.219:16456,ac1d78038dfa515ec5e44db02831ceb2d1d1d57e@75.119.136.242:26656,da448d3b9fc80a5a4be747dd3d82f9be3812c544@144.126.213.37:16456,e47e39992ba47d7544797ec16eedcd24503a2629@144.91.84.170:26656,5a4d38ac71bf0546333c28ab2be75f069d72508f@84.247.177.86:26656,bf7bdcaf6cc807e53d3a63e64018ea3f57530bd5@213.199.40.126:26656,8ff0124d5f1881b708f459cc464f894b5bcc99be@38.242.212.146:26656,13b748e30700d662dd7516064d08f31a3a7c8e18@62.169.16.169:26656,f4231a379eb5b306210ee8dcde1cf9c1c5eeb965@37.60.228.142:26656,4091fc5a27a91c717b8ce84a3e76f81b96474df1@207.180.252.190:26656,ea224a77f8aa0805561da4047b0a8b2d89ecce2a@213.199.61.159:26656,6b644af890863f830d3e6b37a3e82d7b8847f342@173.212.221.121:16456,84ee5874d03a659dd18b886ea82c1c17b973db50@65.108.209.212:26656,1b06fd4dd3fcd7e530b60a2b6a7f228130906322@141.94.99.181:33656,64e84008878bb053f33b7b76c8684bb12ba53ec8@109.123.246.140:26656" && sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.evmosd/config/config.toml
-  ```
-- Start the node to sync to the latest blockchain (This could take a few hours):
-  ```
-  evmosd start
+  0gchaind start
   ```
 - To confirm if your node has fully synced, run:
   ```
-  evmosd status | jq
+  0gchaind status | jq
   ```
   For a synced up node, `"catching_up": false`.
