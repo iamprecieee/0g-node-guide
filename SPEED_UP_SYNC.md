@@ -6,33 +6,33 @@
   ```
 - Download the latest snapshot:
   ```
-  wget https://rpc-zero-gravity-testnet.trusted-point.com/latest_snapshot.tar.lz4
+  wget http://snapshots.liveraven.net/snapshots/testnet/zero-gravity/zgtendermint_16600-1_latest.tar.lz4
   ```
 - Backup `priv_validator_state.json`:
   ```
-  cp $HOME/.evmosd/data/priv_validator_state.json $HOME/.evmosd/priv_validator_state.json.backup
+  cp $HOME/.0gchain/data/priv_validator_state.json $HOME/.0gchain/priv_validator_state.json.backup
   ```
 - Reset DB:
   ```
-  evmosd tendermint unsafe-reset-all --home $HOME/.evmosd --keep-addr-book
+  0gchain tendermint unsafe-reset-all --home $HOME/.0gchain --keep-addr-book
   ```
 - Extract archived files:
   ```
-  lz4 -d -c ./latest_snapshot.tar.lz4 | tar -xf - -C $HOME/.evmosd
+  lz4 -d -c ./zgtendermint_16600-1_latest.tar.lz4 | tar -xf - -C $HOME/.0gchain
   ```
 - Restore `priv_validator_state.json`:
   ```
-  mv $HOME/.evmosd/priv_validator_state.json.backup $HOME/.evmosd/data/priv_validator_state.json
+  mv $HOME/.0gchain/priv_validator_state.json.backup $HOME/.0gchain/data/priv_validator_state.json
   ```
 - Restart your node:
   ```
-  evmosd start
+  0gchain start
   ```
 - Give your node a few minutes to sync. You can check status using:
   ```
-  evmosd status | jq
+  0gchain status | jq
   ```
 
 
 
-Refer to [trusted-point](https://github.com/trusted-point/0g-tools?tab=readme-ov-file#download-snapshot) for more info.
+Refer to [liveraven](https://services.liveraven.net/cosmos-testnets/zero-gravity/snapshots) for more info.
