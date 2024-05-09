@@ -30,7 +30,7 @@
   ```
 - Delegate some tokens to your validator:
   ```
-  0gchaind tx staking delegate $(0gchaind keys show <insert_your_key_name_here> --bech val -a)  <insert_amount_here>ua0gi --from <insert_your_key_name_here> --gas auto --gas-prices 0.0025ua0gi -y
+  0gchaind tx staking delegate $(0gchaind keys show <insert_your_key_name_here> --bech val -a)  <insert_amount_here>ua0gi --chain-id zgtendermint_16600-1 --from <insert_your_key_name_here> --gas auto --gas-prices 0.0025ua0gi -y
   ```
 - Check if your validator made it to the 'active validators' set:
   ```
