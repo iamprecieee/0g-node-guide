@@ -70,7 +70,7 @@
   ```
 - If you run into any issue with the above peers, you can get the latest peers from [liveraven]:
   ```
-  curl -sS h ttps://testnet.zero-gravity.rpc.liveraven.net/net_info \
+  curl -sS https://testnet.zero-gravity.rpc.liveraven.net/net_info \
   | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' \
   | awk -F ':' '{print $1":"$(NF)}'
   ```
