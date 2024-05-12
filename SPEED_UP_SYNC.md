@@ -14,7 +14,7 @@
   ```
 - Reset DB:
   ```
-  0gchain tendermint unsafe-reset-all --home $HOME/.0gchain --keep-addr-book
+  0gchaind tendermint unsafe-reset-all --home $HOME/.0gchain --keep-addr-book
   ```
 - Extract archived files:
   ```
@@ -26,11 +26,11 @@
   ```
 - Restart your node:
   ```
-  0gchain start
+  0gchaind start
   ```
 - Give your node a few minutes to sync. You can check status using:
   ```
-  0gchain status | jq
+  0gchaind status | jq
   ```
 
 
